@@ -2,7 +2,50 @@
 layout: default
 ---
 
-# [](new_era)新时代
+# Deep Learning学习笔记一
+
+去年的VR/AR，今年的人工智能，都是大公司和资本追逐的热点。以前总觉得AI这事儿太缥缈，大多公司都是忽悠，直到前几天看到Geoff Hinton的事情，才知道近年来因为新算法的提出，这个领域确实被Deep Learning改变了。
+
+这几天翻了不少资料，知乎上看到Naiyan Wang同学的回答“Deep Learning本质上是工程学科，而不是自然学科。”，感觉说的非常好。所以决定这段时间深入研究一下这块。
+
+今天这篇学习笔记主要是写Theano在Mac下的安装，明天再看看怎么使用。
+
+### Python与Anaconda
+
+MacOS Sierra自带Python v2.7.x，所以这块基本无需准备。
+
+但Anaconda是需要装的，不过300M的东西，在官网下载还挺费劲的，这里我们使用清华Tuna，访问：
+
+[https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/]()
+
+选择Anaconda2中的最新版（Anaconda3对应Python 3.x）下载，例如我下载的是 `Anaconda2-4.3.1-MacOSX-x86_64.sh` 。
+
+完成之后直接执行：
+
+```bash
+$ bash Anaconda2-4.3.1-MacOSX-x86_64.sh
+```
+
+确认完license之后它会问你装到`$HOME/anaconda2`行不行，不行可以输入想要安装的路径作为`PREFIX`。安装完成后还会自动在`$HOME/.bash_profile`中追加`PATH`指向：
+
+```bash
+# added by Anaconda2 4.3.1 installer
+export PATH="/Users/colin/Tools/anaconda2/bin:$PATH"
+```
+
+要使得此配置生效，可以重新开一个Terminal窗口，或执行`source`指令：
+
+```bash
+source ~/.bash_profile
+```
+
+### 
+
+
+
+* * * *
+
+# 新时代
 
 自从2012年创业之后，就很少写博客了。
 
