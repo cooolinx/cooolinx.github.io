@@ -6,7 +6,14 @@ layout: default
 
 自从2012年创业之后，就很少写博客了。
 
-#### 选择 [](https://pages.github.com)GitHub Pages
+### 选择GitHub Pages
 
-当年从 [](http://blogbus.com)博客大巴 迁移到 [](https://zh-cn.wordpress.com)WordPress ，部署的服务器也从 [](https://aws.amazon.com)Amazon EC2 Tokyo 到 [](https://aliyun.com)阿里云 最后变成 `backup.tgz` 躺在硬盘里，中间还有一年 [](http://guosfamily.com)域名 被他人抢注，拿回来后又需要重新备案。几经波折，想想还是找一个稳定的服务提供商靠谱一些，毕竟现在已不是当年那个有着大把时间折腾的技术小青年了。
+当年从博客大巴迁移到WordPress ，部署的服务器也从Amazon EC2 Tokyo到阿里云最后变成`backup.tgz`躺在硬盘里，中间还有一年域名被他人抢注，拿回来后又需要重新备案。几经波折，想想还是找一个稳定的服务提供商靠谱一些，毕竟现在已不是当年那个有着大把时间折腾的技术小青年了。
 
+### 从头开始
+
+2012年开始的第一段创业，技术用了不少，从Objective-C到C++到Node.js，从FFmpeg到Cocos2d-x到SocketIO，虽然做出来的产品都很不错，但一直都没怎么沉下心去研究。因为创业逼迫着我思考许多问题，尤其是生存问题。
+
+2015年开始第二段创业，一个重运营的O2O项目，更多的是团队管理、运营、公司治理，把原来很少接触的市场、运营、人力、财务、资本全部走了个遍。成长不少，但却在技术路上越行越远。
+
+这段时间公司调整，慢慢闲了下来，觉得是时候从头开始做一些事情了。
