@@ -6,19 +6,21 @@ layout: default
 
 去年的VR/AR，今年的人工智能，都是大公司和资本追逐的热点。以前总觉得AI这事儿太缥缈，大多公司都是忽悠，直到前几天看到Geoff Hinton的事情，才知道近年来因为新算法的提出，这个领域确实被Deep Learning改变了。
 
-这几天翻了不少资料，知乎上看到Naiyan Wang同学的回答“Deep Learning本质上是工程学科，而不是自然学科。”，感觉说的非常好。所以决定这段时间深入研究一下这块。
+这几天翻了不少资料，知乎上看到Naiyan Wang同学的回答：
+> Deep Learning本质上是工程学科，而不是自然学科。
+感觉说的非常好。所以决定这段时间深入研究一下这块。
 
-今天这篇学习笔记主要是写Theano在Mac下的安装，明天再看看怎么使用。
+今天这篇学习笔记主要是写Theano在Mac下的安装，之后会再补充其他信息。
 
 ### Python与Anaconda
 
-MacOS Sierra自带Python v2.7.x，所以这块基本无需准备。
+MacOS Sierra自带Python v2.7.x，所以Python就算是默认准备好了，但Anaconda是需要装的。
 
-但Anaconda是需要装的，不过300M的东西，在官网下载还挺费劲的，这里我们使用清华Tuna，访问：
+300M的Anaconda，在官网下载还挺费劲的，这里我们使用清华Tuna，访问：
 
-[https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/]()
+[https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/)
 
-选择Anaconda2中的最新版（Anaconda3对应Python 3.x）下载，例如我下载的是 `Anaconda2-4.3.1-MacOSX-x86_64.sh` 。
+选择Anaconda2中的最新版（Anaconda3对应Python 3.x）下载，例如我下载的是`Anaconda2-4.3.1-MacOSX-x86_64.sh` 。
 
 完成之后直接执行：
 
@@ -36,14 +38,66 @@ export PATH="/Users/colin/Tools/anaconda2/bin:$PATH"
 要使得此配置生效，可以重新开一个Terminal窗口，或执行`source`指令：
 
 ```bash
-source ~/.bash_profile
+$ source ~/.bash_profile
 ```
 
-### 
+测试一下，有输出就表示安装成功：
+
+```bash
+$ conda --version
+conda 4.3.16
+```
+
+### Theano与关联组件安装
+
+开始用Conda安装组件前，先将清华Tuna的仓库加入，在国内可以极大提升更新效率！
+
+```bash
+$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+$ conda config --set show_channel_urls yes
+```
+
+根据[Theano官网的说明](http://deeplearning.net/software/theano/install_macos.html)，有如下组件是必装的：
+
+* NumPy
+* SciPy
+* BLAS（建议MKL）
+
+执行以下指令查看现在conda装了哪些组件：
+
+```bash
+$ conda list
+```
+
+发现必装的基本都有了，这里我补装了一个可选组件：
+
+```bash
+$ conda intall pydot-ng
+```
+
+完成之后就可以直接开始装Theano了
+
+```bash
+$ conda install theano pygpu
+```
+
+最后检查一下是否安装成功：
+```python
+$ python
+>>> import theano
+>>> theano.test()
+Theano version 0.9.0.dev-c697eeab84e5b8a74908da654b66ec9eca4f1291
+theano is installed in /Users/guolin/Tools/anaconda2/lib/python2.7/site-packages/theano
+……
+```
+
+如果出现了类似以上信息则表示安装成功。
+
 
 
 
 * * * *
+
 
 # 新时代
 
