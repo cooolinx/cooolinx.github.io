@@ -4,10 +4,14 @@ layout: default
 
 # Deep Learning学习笔记一
 
+###### 2017年5月7日
+
 去年的VR/AR，今年的人工智能，都是大公司和资本追逐的热点。以前总觉得AI这事儿太缥缈，大多公司都是忽悠，直到前几天看到Geoff Hinton的事情，才知道近年来因为新算法的提出，这个领域确实被Deep Learning改变了。
 
 这几天翻了不少资料，知乎上看到Naiyan Wang同学的回答：
+
 > Deep Learning本质上是工程学科，而不是自然学科。
+
 感觉说的非常好。所以决定这段时间深入研究一下这块。
 
 今天这篇学习笔记主要是写Theano在Mac下的安装，之后会再补充其他信息。
@@ -69,10 +73,10 @@ $ conda config --set show_channel_urls yes
 $ conda list
 ```
 
-发现必装的基本都有了，这里我补装了一个可选组件：
+发现必装的基本都有了，这里我补装了一个可选组件以及nose_parameterized（不装后面的测试会失败）：
 
 ```bash
-$ conda intall pydot-ng
+$ conda intall 'pydot-ng' 'nose-parameterized'
 ```
 
 完成之后就可以直接开始装Theano了
@@ -81,25 +85,33 @@ $ conda intall pydot-ng
 $ conda install theano pygpu
 ```
 
-最后检查一下是否安装成功：
-```python
+由于我的MacBook Pro显卡是Intel Iris Graphics 6100的，不支持NVIDIA CUDA，甚至连支持OpenCL的驱动都没有，就不装那些GPU相关的组件了。装完后检查一下是否安装成功：
+```bash
 $ python
 >>> import theano
 >>> theano.test()
 Theano version 0.9.0.dev-c697eeab84e5b8a74908da654b66ec9eca4f1291
 theano is installed in /Users/guolin/Tools/anaconda2/lib/python2.7/site-packages/theano
-……
+...
+----------------------------------------------------------------------
+Ran 5486 tests in 24461.664s
+
+FAILED (SKIP=699, errors=30)
+<nose.result.TextTestResult run=5486 errors=30 failures=0>
 ```
 
-如果出现了类似以上信息则表示安装成功。
+这可能需要很长时间（我这边是7个小时……）。可能会出错，但需要看是什么错误，比如我的错误大多都是CUDA加载问题，可能是由于没有GPU支持产生的，可以忽略。
 
+ 
 
-
+ 
 
 * * * *
 
 
 # 新时代
+
+###### 2017年5月6日
 
 自从2012年创业之后，就很少写博客了。
 
