@@ -20,19 +20,19 @@ layout: default
 
 MacOS Sierra自带Python v2.7.x，所以Python就算是默认准备好了，但Anaconda是需要装的。
 
-300M的Anaconda，在官网下载还挺费劲的，这里我们使用清华Tuna，访问：
+300M的Anaconda，在官网下载会很慢，这里我们在清华Tuna的镜像上下载：
 
 [https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/)
 
 选择Anaconda2中的最新版（Anaconda3对应Python 3.x）下载，例如我下载的是`Anaconda2-4.3.1-MacOSX-x86_64.sh` 。
 
-完成之后直接执行：
+由于是.sh，完成之后可以直接执行：
 
 ```bash
 $ bash Anaconda2-4.3.1-MacOSX-x86_64.sh
 ```
 
-确认完license之后它会问你装到`$HOME/anaconda2`行不行，不行可以输入想要安装的路径作为`PREFIX`。安装完成后还会自动在`$HOME/.bash_profile`中追加`PATH`指向：
+确认完license之后它会问你装到`$HOME/anaconda2`行不行，不行可以输入想要安装的路径作为`PREFIX`，安装完成后还会自动在`$HOME/.bash_profile`中追加`PATH`指向：
 
 ```bash
 # added by Anaconda2 4.3.1 installer
@@ -54,7 +54,7 @@ conda 4.3.16
 
 ### Theano与关联组件安装
 
-开始用Conda安装组件前，先将清华Tuna的仓库加入，在国内可以极大提升更新效率！
+开始用Conda安装组件前，先将清华Tuna的仓库加入，在国内可以极大提升安装/更新效率！
 
 ```bash
 $ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
@@ -73,19 +73,20 @@ $ conda config --set show_channel_urls yes
 $ conda list
 ```
 
-发现必装的基本都有了，这里我补装了一个可选组件以及nose_parameterized（不装后面的测试会失败）：
+发现必装的基本都有了，这里我补装了一个可选组件`pydot-ng`以及测试用的`nose_parameterized`：
 
 ```bash
 $ conda intall 'pydot-ng' 'nose-parameterized'
 ```
 
-完成之后就可以直接开始装Theano了
+由于我的MacBook Pro显卡是Intel Iris Graphics 6100不支持NVIDIA CUDA（甚至连OpenCL的驱动都没有），就不装那些GPU相关的组件了。完成之后开始装Theano：
 
 ```bash
 $ conda install theano pygpu
 ```
 
-由于我的MacBook Pro显卡是Intel Iris Graphics 6100的，不支持NVIDIA CUDA，甚至连支持OpenCL的驱动都没有，就不装那些GPU相关的组件了。装完后检查一下是否安装成功：
+装完后检查一下是否安装成功：
+
 ```bash
 $ python
 >>> import theano
@@ -100,7 +101,7 @@ FAILED (SKIP=699, errors=30)
 <nose.result.TextTestResult run=5486 errors=30 failures=0>
 ```
 
-这可能需要很长时间（我这边是7个小时……）。可能会出错，但需要看是什么错误，比如我的错误大多都是CUDA加载问题，可能是由于没有GPU支持产生的，可以忽略。
+这可能需要很长时间，我这边是7个小时，跑了5486个TestCase，最后出错结束的。可能会出错，但需要看是什么错误，比如我的错误大多都是CUDA加载问题，可能是由于没有GPU支持产生的，可以忽略。
 
 <br /><br />
 
