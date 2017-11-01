@@ -12,7 +12,7 @@ layout: default
 
 > Deep Learning本质上是工程学科，而不是自然学科。
 
-感觉说的非常好。所以决定这段时间深入研究一下这块。
+感觉说的非常好，决定这段时间深入研究一下这块。
 
 今天这篇学习笔记主要是写Theano在Mac下的安装，之后会再补充其他信息。
 
@@ -90,18 +90,14 @@ $ conda install theano pygpu
 ```bash
 $ python
 >>> import theano
->>> theano.test()
-Theano version 0.9.0.dev-c697eeab84e5b8a74908da654b66ec9eca4f1291
-theano is installed in /Users/guolin/Tools/anaconda2/lib/python2.7/site-packages/theano
-...
-----------------------------------------------------------------------
-Ran 5486 tests in 24461.664s
-
-FAILED (SKIP=699, errors=30)
-<nose.result.TextTestResult run=5486 errors=30 failures=0>
+>>> x = theano.tensor.iscalar('x')
+>>> y = x * 2
+>>> f = theano.function([ x ], y)
+>>> print f(7)
+14
 ```
 
-这可能需要很长时间，我这边是7个小时，跑了5486个TestCase，最后出错结束的。可能会出错，但需要看是什么错误，比如我的错误大多都是CUDA加载问题，可能是由于没有GPU支持产生的，可以忽略。
+打印出14代表执行成功。
 
 <br /><br />
 
