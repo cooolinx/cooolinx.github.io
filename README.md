@@ -1,5 +1,12 @@
 # Cooolin's Blog
 
+## 编写
+
+1. 启动Jekyll：`bundle exec jekyll serve`
+2. 在`_posts`下新增文件，编写内容
+3. 访问`http://localhost:4000`预览
+4. `git commit` / `git push`
+
 ## 初次安装
 
 根据[Jekyll](https://jekyllrb.com/)指示初始化并运行网站：
@@ -17,6 +24,10 @@ bundle exec jekyll serve
 2. 执行 `bundle install` 进行安装
 3. 修改 `_config.yml` 中的主题 `theme: jekyll-theme-clean-blog`
 4. 运行 `bundle exec jekyll serve`
+
+## 其他模板
+
+- [huxpro](https://github.com/Huxpro/huxpro.github.io/blob/master/README.zh.md)
 
 ## Roadmap
 
