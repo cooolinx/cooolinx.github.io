@@ -3,7 +3,7 @@ layout: page
 title: About
 description: 我是谁 · 我在哪里
 permalink: /about/
-background: '../images/bg-camping.jpg'
+background: '/assets/bg/camping.jpg'
 ---
 
 1984年生，1992年自学编程，至今近三十年。

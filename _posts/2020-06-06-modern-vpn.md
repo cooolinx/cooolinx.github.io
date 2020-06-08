@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "摩登穿墙 · 前言"
-background: '/images/bg-puket.jpg'
+background: '/assets/bg/puket.jpg'
 date:   2020-06-06 20:03:00 +0800
 categories: scinet
 ---

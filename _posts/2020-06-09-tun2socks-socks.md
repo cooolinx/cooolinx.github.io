@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "摩登穿墙 · 三 · tun2socks的SOCKS"
-background: '/images/bg-puket.jpg'
+background: '/assets/bg/puket.jpg'
 date:   2020-06-09 00:22:00 +0800
 categories: scinet
 ---
