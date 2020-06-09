@@ -28,6 +28,7 @@ bundle exec jekyll serve
 ## 其他模板
 
 - [huxpro](https://github.com/Huxpro/huxpro.github.io/blob/master/README.zh.md)
+- [代码高亮的CSS](http://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html)
 
 ## Roadmap
 
