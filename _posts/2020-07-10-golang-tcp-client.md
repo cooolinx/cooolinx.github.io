@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Go笔记 · 一条TCP连接讲透九大知识点"
-subtitle: "Go网络编程与dial,defer,Read,EOF,for,go,chan,select,context"
+title: "Go网络编程 · 一条TCP连接讲透九大知识点"
+subtitle: "Dial,defer,Read,EOF,for,go,chan,select,context"
 background: '/assets/bg/puket.jpg'
 date:   2020-07-10 19:07:00 +0800
 categories: scinet
