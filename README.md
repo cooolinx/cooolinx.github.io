@@ -32,19 +32,57 @@ bundle exec jekyll serve
 
 ## Roadmap
 
-- OpenCV
-- 360°全景相机的算法实现
+网络篇
+
+- tun2socks的TUN
+- tun2socks的SOCKS
+- IP/IPv4/IPv6
+- TCP
+- UDP
+- DNS
+- TLS
+- HTTP
+- SCTP
+- SSL
+- GRPC
+- ICMP & IGMP
+- HTTP/2
+- ESNI
+- AEAD
+- Protobuf
+- Android与VpnService
+- iOS与NetworkExtension
+
+科学上网
+
+- 前言
+- 基本原理
+- SS/SSR
+- V2Ray
+- Trojan
+- naiveproxy
+- NEKit
+- Go Mobile与第三方库编译
 - 全局代理之Windows版
 - 全局代理之MacOS版
 - 全局代理之iOS版
 - 全局代理之Android版
+
+
+图像处理篇
+
+- OpenCV
+- 360°全景相机的算法实现
+
+DevOps篇
+
 - 与Docker结合的DevOps实践
 - DevOps之GitLab全攻略
 - DevOps之阿里云
 - DevOps之Google Cloud
-- OpenCV从入门到放弃
-- Flutter从入门到放弃
 - docker/k8s
 
+前端篇
 
+- Flutter从入门到放弃
 
