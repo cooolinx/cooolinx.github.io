@@ -19,8 +19,10 @@ Shawn查了很久，终于发现是Flutter for iOS的TLS握手时要做OCSP，�
 1. 简单原理
 2. 确认证书是否可用
 3. 三个解决方案
-4. 外网服务器配置OCSP Stapling
-5. 内网服务器配置OCSP Responder
+4. 外网服务器解决
+5. 内网服务器解决
+  1. 配置stapling responder
+  2. 配置本地stapling file
 6. 验证
 
 # 1 - 简单原理
@@ -67,6 +69,9 @@ openssl ocsp -issuer chain.pem -cert certificate.pem \
         -header "Host" "ocsp.int-x3.letsencrypt.org" -text \
         -url http://ocsp.int-x3.letsencrypt.org
 ```
+
+> 如果是`openssl 1.1.1`（如MacOS），请将`-header`那句改为：`-header "Host=ocsp.int-x3.letsencrypt.org"`
+
 
 正常输出结果
 
@@ -131,7 +136,7 @@ certificate.pem: good
 2. 避免使用HTTPS链接（不推荐）
 3. 配置服务端OCSP Stapling（往下看）
 
-# 4 - 外网服务器配置OCSP Stapling
+# 4 - 外网服务器解决
 
 如果我们的服务器在外网的，那就比较好办了，直接启用`OCSP Stapling`，在服务端提前做OCSP验证，然后再把验证信息随TLS握手下发。编辑服务端`nginx.conf`
 
@@ -141,7 +146,7 @@ http {
 
     # DNS解析器
     resolver 8.8.8.8 8.8.4.4 valid=300s;
-    resolver_timeout 10s;
+    resolver_timeout 5s;
 
     server {
         # ...
@@ -154,9 +159,13 @@ http {
 
 重启nginx即可
 
-# 5 - 内网服务器配置OCSP responder
+# 5 - 内网服务器解决
 
-如果我们的服务器在内网，本身无法访问OCSP验证URL，那么你需要：
+如果我们的服务器在内网，本身无法访问OCSP验证URL，以下是两种解决方案（for nginx）。
+
+## 5.1 - Stapling Responder
+
+此方案你需要：
 
 1. 一个HTTP代理服务器允许访问外网
 2. 配置一个`stapling responder`
@@ -192,6 +201,40 @@ ssl_trusted_certificate /etc/ssl/ca-certs.pem;  # as the same as `ssl_certificat
 ```
 
 注意若nginx在docker容器中，`127.0.0.1`需改为宿主机IP，然后重启nginx即可。
+
+## 5.2 - Stapling File
+
+不使用代理的话，也可以简单的使用`stapling file`。
+
+
+准备证书与OCSP的URL
+
+```sh
+openssl s_client -connect tc.cen2.pw:443 < /dev/null 2>&1 | sed -n '/-----BEGIN/,/-----END/p' > certificate.pem
+openssl s_client -showcerts -connect tc.cen2.pw:443 < /dev/null 2>&1 | sed -n '/-----BEGIN/,/-----END/p' | awk 'BEGIN { n=0 } { if ($0=="-----BEGIN CERTIFICATE-----") { n+=1 } if (n>=2) { print $0 } }' > chain.pem
+openssl x509 -noout -ocsp_uri -in certificate.pem
+```
+
+下载文件
+
+```sh
+openssl ocsp -no_nonce -respout ./cen2.pw.der \
+             -verify_other chain.pem \
+             -issuer ./chain.pem -cert ./certificate.pem \
+             -header "HOST" "ocsp.int-x3.letsencrypt.org" \
+             -url http://ocsp.int-x3.letsencrypt.org/
+```
+
+> 如果是`openssl 1.1.1`（如MacOS），请将`-header`那句改为：`-header "Host=ocsp.int-x3.letsencrypt.org"`
+
+在nginx中配置:
+
+```nginx
+ssl_stapling on;
+ssl_stapling_verify on;
+ssl_trusted_certificate /etc/ssl/ca-certs.pem;  # as the same as `ssl_certificate`
+ssl_stapling_file /home/work/.certs/cen2.pw.der;
+```
 
 # 6 - 验证
 
