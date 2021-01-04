@@ -73,24 +73,24 @@ void hello() {
 在Xcode控制台中，显示：
 
 ```
-logtest: ~~~~~~~~~ printf
-2021-01-04 17:24:22.196717+0800 LogApp[6626:6846463] logtest: ~~~~~~~~~ syslog LOG_INFO
-2021-01-04 17:24:22.196758+0800 LogApp[6626:6846463] logtest: ~~~~~~~~~ syslog LOG_NOTICE
-2021-01-04 17:24:22.196814+0800 LogApp[6626:6846463] logtest: ~~~~~~~~~ os_log_info in c++
-2021-01-04 17:24:22.197344+0800 LogApp[6626:6846463] logtest: ~~~~~~~~~ os_log_error in c++
-2021-01-04 17:24:22.197371+0800 LogApp[6626:6846463] logtest: ~~~~~~~~~ os_log_with_type in c++
-2021-01-04 17:24:22.197675+0800 LogApp[6626:6846463] logtest: ~~~~~~~~~ NSLog
-2021-01-04 17:24:22.197735+0800 LogApp[6626:6846463] logtest: ~~~~~~~~~ os_log
+logtest: printf
+2021-01-04 17:24:22.196717+0800 LogApp[6626:6846463] logtest: syslog LOG_INFO
+2021-01-04 17:24:22.196758+0800 LogApp[6626:6846463] logtest: syslog LOG_NOTICE
+2021-01-04 17:24:22.196814+0800 LogApp[6626:6846463] logtest: os_log_info in c++
+2021-01-04 17:24:22.197344+0800 LogApp[6626:6846463] logtest: os_log_error in c++
+2021-01-04 17:24:22.197371+0800 LogApp[6626:6846463] logtest: os_log_with_type in c++
+2021-01-04 17:24:22.197675+0800 LogApp[6626:6846463] logtest: NSLog
+2021-01-04 17:24:22.197735+0800 LogApp[6626:6846463] logtest: os_log
 ```
 
 在Console.app中显示：
 
 ```
-默认  17:24:23.023423+0800  LogApp logtest: ~~~~~~~~~ syslog LOG_NOTICE
-错误  17:24:23.023614+0800  LogApp logtest: ~~~~~~~~~ os_log_error in c++
-默认  17:24:23.023643+0800  LogApp logtest: ~~~~~~~~~ os_log_with_type in c++
-默认  17:24:23.023672+0800  LogApp logtest: ~~~~~~~~~ NSLog
-默认  17:24:23.024055+0800  LogApp logtest: ~~~~~~~~~ os_log
+默认  17:24:23.023423+0800  LogApp logtest: syslog LOG_NOTICE
+错误  17:24:23.023614+0800  LogApp logtest: os_log_error in c++
+默认  17:24:23.023643+0800  LogApp logtest: os_log_with_type in c++
+默认  17:24:23.023672+0800  LogApp logtest: NSLog
+默认  17:24:23.024055+0800  LogApp logtest: os_log
 ```
 
 结论如上。
